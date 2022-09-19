@@ -1,28 +1,17 @@
+import React, { useState } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
 import { NextPage } from "next";
 
-import bg from "../public/bg.svg";
+import IconHome from "../public/Home.svg";
+
 import InputField from "../components/ui/inputField";
 
-const img = (
-  <svg
-    width="99"
-    height="719"
-    viewBox="0 0 99 719"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M16.3337 7.13968e-07L11.1757 30.5416C5.158 59.9924 -6.01769 119.985 5.15799 179.977C16.3337 239.97 50.7204 299.962 61.8961 361.045C73.0718 421.038 79.0895 481.03 61.8961 541.023C44.7027 601.015 22.3513 661.007 11.1757 690.458L-3.15159e-05 721L99 721L99 690.458C99 661.008 99 601.015 99 541.023C99 481.03 99 421.038 99 361.045C99 299.962 99 239.97 99 179.977C99 119.985 99 59.9925 99 30.5417L99 0.000114066L16.3337 7.13968e-07Z"
-      fill="white"
-    />
-  </svg>
-);
-
 const Home: NextPage = () => {
+  const [mainCategory, setMainCategory] = useState<
+    "kucanstvo" | "ostalo" | null
+  >(null);
   return (
     <div className="w-full max-h-screen h-screen">
       <Head>
@@ -34,16 +23,47 @@ const Home: NextPage = () => {
           rel="stylesheet"
         ></link>
       </Head>
-      <main className="flex-1 h-full flex flex-row">
-        <div className="flex-1 relative flex justify-center items-center main-bg">
-          <h1 className="text-white text-5xl uppercase font-black text-center leading-[54px] fade-in-right">
+      <main className="flex-1 h-full flex flex-col sm:flex-row">
+        <div className=" sm:flex-1 relative flex justify-center items-center bg-green-400 sm:bg-transparent main-bg">
+          <h1 className="text-white text-md sm:text-5xl uppercase font-black text-center sm:leading-[54px] fade-in-right">
             KALKULATOR
             <br /> troška električne <br />
             energije
           </h1>
         </div>
         <div className="flex-1">
-          <InputField label="Test one" name="test" valueType="kvarh" />
+          <div>
+            <div
+              onClick={() => setMainCategory("kucanstvo")}
+              className={
+                "border border-gray-200 h-20 w-20 rounded-md flex flex-col items-center justify-center gap-2 cursor-pointer " +
+                (mainCategory === "kucanstvo"
+                  ? "bg-green-300 shadow-md text-white"
+                  : " text-gray-700")
+              }
+            >
+              <svg
+                width="31"
+                height="32"
+                viewBox="0 0 31 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.6156 30.0373V25.145C10.6156 23.8961 11.6355 22.8837 12.8935 22.8837H17.4922C18.0963 22.8837 18.6757 23.1219 19.1028 23.546C19.53 23.9701 19.77 24.5452 19.77 25.145V30.0373C19.7662 30.5565 19.9713 31.0558 20.3398 31.4242C20.7083 31.7927 21.2097 32 21.7327 32H24.8701C26.3354 32.0037 27.742 31.4285 28.7794 30.4013C29.8169 29.374 30.4 27.9791 30.4 26.5245V12.587C30.4 11.4119 29.8753 10.2973 28.9674 9.54346L18.2944 1.08139C16.4378 -0.402301 13.7778 -0.354396 11.9766 1.19516L1.54722 9.54346C0.596384 10.2751 0.0280836 11.393 0 12.587V26.5103C0 29.5421 2.47581 32 5.52987 32H8.59565C9.68195 32 10.5648 31.1299 10.5727 30.0515L10.6156 30.0373Z"
+                  fill={mainCategory === "kucanstvo" ? "white" : "#3F3F3F"}
+                />
+              </svg>
+
+              <div className="text-[12px]">Kucanstvo</div>
+            </div>
+          </div>
+          <InputField
+            label="Test one"
+            name="test"
+            valueType="kvarh"
+            onChange={(e: any) => console.log(e.target.value)}
+          />
         </div>
       </main>
     </div>

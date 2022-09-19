@@ -1,7 +1,5 @@
 import React from "react";
 
-//value, label, name, placeholder, type, onChange
-
 interface Props {
   disabled?: Boolean;
   value?: string | number;
