@@ -3,6 +3,7 @@ import Image from "next/image";
 import { NextPage } from "next";
 
 import bg from "../public/bg.svg";
+import InputField from "../components/ui/inputField";
 
 const img = (
   <svg
@@ -41,7 +42,9 @@ const Home: NextPage = () => {
             energije
           </h1>
         </div>
-        <div className="flex-1">RIGHT SIDE</div>
+        <div className="flex-1">
+          <InputField label="Test one" name="test" valueType="kvarh" />
+        </div>
       </main>
     </div>
   );
