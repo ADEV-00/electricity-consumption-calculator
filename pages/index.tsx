@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -7,11 +7,29 @@ import { NextPage } from "next";
 import IconHome from "../public/Home.svg";
 
 import InputField from "../components/ui/inputField";
+import Dropdown from "../components/ui/dropdown";
 
 const Home: NextPage = () => {
   const [mainCategory, setMainCategory] = useState<
     "kucanstvo" | "ostalo" | null
   >(null);
+  const [currSubCategory, setCurrSubCategory] = useState() as any;
+
+  const homeCategory = ["I tarifna grupa", "II tarifna grupa"];
+  const otherCategory = [
+    "I tarifna grupa",
+    "II tarifna grupa",
+    "III tarifna grupa",
+    "IV tarifna grupa",
+    "V tarifna grupa",
+  ];
+
+  useEffect(() => {
+    mainCategory === "kucanstvo"
+      ? setCurrSubCategory(homeCategory[0])
+      : setCurrSubCategory(otherCategory[0]);
+  }, [mainCategory]);
+
   return (
     <div className="w-full max-h-screen h-screen">
       <Head>
@@ -92,6 +110,10 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
+            <Dropdown
+              data={mainCategory === "kucanstvo" ? homeCategory : otherCategory}
+              value={currSubCategory}
+            />
             <InputField
               label="Test one"
               name="test"
