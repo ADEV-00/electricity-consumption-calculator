@@ -47,3 +47,21 @@ body {
     transform: translateX(0);
   }
 }
+
+.main-category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.main-category > div > p {
+  font-size: 40px;
+}
+
+.main-category > div > div > div {
+  height: 200px;
+  width: 200px;
+  font-size: 30px;
+}

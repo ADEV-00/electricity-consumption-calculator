@@ -3,11 +3,12 @@ import React, { useState, useRef, useEffect } from "react";
 interface Props {
   data: string[];
   value?: string;
-  onChange?: () => void;
+  onChange?: (category: string) => void;
+  label?: string;
 }
 
 const Dropdown = (props: Props) => {
-  const { data, value } = props;
+  const { data, value, onChange, label } = props;
   const [toggle, setToggle] = useState<Boolean>(false);
   const ref = useRef(null);
 
@@ -24,8 +25,19 @@ const Dropdown = (props: Props) => {
     };
   }, []);
 
+  const handleItemClick = (category) => {
+    if (category != value) {
+      onChange(category);
+      setToggle(false);
+    }
+    return;
+  };
+
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative flex flex-col space-y-2" ref={ref}>
+      {label && (
+        <label className="text-lg font-medium text-gray-700">{label}</label>
+      )}
       <button
         onClick={() => setToggle(!toggle)}
         className="text-gray-700 border border-gray-200 hover:shadow-md bg-transparent focus:outline-none focus:border-green-300 focus:shadow-md focus:shadow-green-300/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
@@ -41,9 +53,9 @@ const Dropdown = (props: Props) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M19 9l-7 7-7-7"
           ></path>
         </svg>
@@ -51,12 +63,15 @@ const Dropdown = (props: Props) => {
       {toggle && (
         <div
           id="dropdown"
-          className="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 absolute top-12 right-0"
+          className="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 absolute top-[75px] right-0"
         >
           <div className="py-1 text-sm text-gray-700 dark:text-gray-200">
             {data &&
               data.map((category: any) => (
-                <div className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
+                <div
+                  onClick={() => handleItemClick(category)}
+                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+                >
                   {category}
                 </div>
               ))}

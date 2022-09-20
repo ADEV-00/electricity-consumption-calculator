@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -29,6 +29,13 @@ const Home: NextPage = () => {
       ? setCurrSubCategory(homeCategory[0])
       : setCurrSubCategory(otherCategory[0]);
   }, [mainCategory]);
+
+  const handleSubCategoryChange = useCallback(
+    (category) => {
+      setCurrSubCategory(category);
+    },
+    [currSubCategory]
+  );
 
   return (
     <div className="w-full max-h-screen h-screen">
@@ -113,6 +120,8 @@ const Home: NextPage = () => {
             <Dropdown
               data={mainCategory === "kucanstvo" ? homeCategory : otherCategory}
               value={currSubCategory}
+              onChange={handleSubCategoryChange}
+              label="Tarifna Grupa"
             />
             <InputField
               label="Test one"
