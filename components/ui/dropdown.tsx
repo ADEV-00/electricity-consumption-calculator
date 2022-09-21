@@ -34,7 +34,7 @@ const Dropdown = (props: Props) => {
   };
 
   return (
-    <div className="relative flex flex-col space-y-2" ref={ref}>
+    <div className="relative flex flex-col space-y-2 fade-in-down" ref={ref}>
       {label && (
         <label className="text-lg font-medium text-gray-700">{label}</label>
       )}
@@ -63,7 +63,7 @@ const Dropdown = (props: Props) => {
       {toggle && (
         <div
           id="dropdown"
-          className="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 absolute top-[75px] right-0"
+          className="z-30 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 absolute top-[75px] right-0"
         >
           <div className="py-1 text-sm text-gray-700 dark:text-gray-200">
             {data &&
