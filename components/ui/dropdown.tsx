@@ -34,7 +34,7 @@ const Dropdown = (props: Props) => {
   };
 
   return (
-    <div className="relative flex flex-col space-y-2 fade-in-down" ref={ref}>
+    <div className="relative flex flex-col space-y-2 " ref={ref}>
       {label && (
         <label className="text-lg font-medium text-gray-700">{label}</label>
       )}
