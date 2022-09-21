@@ -57,8 +57,13 @@ const Home: NextPage = () => {
           </h1>
         </div>
         <div className="flex-1 pt-10">
-          <div className="w-2/4 flex flex-row flex-wrap justify-between  mx-auto">
-            <div className="space-y-2">
+          <div className="w-2/4 flex flex-row flex-wrap justify-between mx-auto ">
+            <div
+              className={
+                "space-y-2 animation-test " +
+                (mainCategory && "animation-test-active")
+              }
+            >
               <p className="text-lg font-medium text-gray-700">
                 Kategorija potrosnje
               </p>
@@ -117,18 +122,25 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            <Dropdown
-              data={mainCategory === "kucanstvo" ? homeCategory : otherCategory}
-              value={currSubCategory}
-              onChange={handleSubCategoryChange}
-              label="Tarifna Grupa"
-            />
-            <InputField
-              label="Test one"
-              name="test"
-              valueType="kvarh"
-              onChange={(e: any) => console.log(e.target.value)}
-            />
+            {mainCategory && (
+              <>
+                <Dropdown
+                  data={
+                    mainCategory === "kucanstvo" ? homeCategory : otherCategory
+                  }
+                  value={currSubCategory}
+                  onChange={handleSubCategoryChange}
+                  label="Tarifna Grupa"
+                />
+
+                <InputField
+                  label="Test one"
+                  name="test"
+                  valueType="kvarh"
+                  onChange={(e: any) => console.log(e.target.value)}
+                />
+              </>
+            )}
           </div>
         </div>
       </main>

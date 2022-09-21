@@ -26,6 +26,12 @@ body {
   opacity: 0;
 }
 
+.fade-in-down {
+  animation: fadeInDown 1.5s forwards;
+  animation-delay: 2s;
+  opacity: 0;
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -48,20 +54,18 @@ body {
   }
 }
 
-.main-category {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.animation-test {
+  transform: scale(1.5) translate(50%, 100%);
 }
 
-.main-category > div > p {
-  font-size: 40px;
+.animation-test-active {
+  animation: mainCategoryAnimation 2s cubic-bezier(0.17, 0, 0.3, 1.13) forwards;
 }
 
-.main-category > div > div > div {
-  height: 200px;
-  width: 200px;
-  font-size: 30px;
+@keyframes mainCategoryAnimation {
+  from {
+  }
+  to {
+    transform: scale(1) translate(0, 0);
+  }
 }
