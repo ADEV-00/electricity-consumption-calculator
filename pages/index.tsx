@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   );
 
   const homeTarifGroup = {
-    first: (
+    "I tarifna grupa": (
       <>
         <InputField
           label="Aktivna energija"
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
         />
       </>
     ),
-    secound: (
+    "II tarifna grupa": (
       <>
         <InputField
           label="Aktivna energija - veća tarifa"
@@ -246,9 +246,9 @@ const Home: NextPage = () => {
                     label="Tarifna Grupa"
                   />
                 </div>
-                <div className="flex flex-row flex-wrap gap-2 justify-between">
-                  {otherTarifGroup[currSubCategory]}
-                </div>
+                {mainCategory === "kucanstvo"
+                  ? homeTarifGroup[currSubCategory]
+                  : otherTarifGroup[currSubCategory]}
               </>
             )}
           </div>

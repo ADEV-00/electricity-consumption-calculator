@@ -13,13 +13,16 @@ interface Props {
 const InputField = (props: Props) => {
   const { value, name, placeholder, onChange, label, valueType } = props;
   return (
-    <div className="w-40 space-y-2">
+    <div className="w-40 space-y-2 flex flex-col justify-end">
       {label && (
-        <label htmlFor={name} className="text-lg font-medium text-gray-700">
+        <label
+          htmlFor={name}
+          className="text-lg font-medium text-gray-700 my-auto"
+        >
           {label}
         </label>
       )}
-      <div className="max-w-full h-9 flex flex-row items-center relative">
+      <div className="max-w-full h-9 flex flex-row items-center relative -z-10">
         <input
           type="number"
           value={value}
