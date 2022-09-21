@@ -22,7 +22,7 @@ const InputField = (props: Props) => {
           {label}
         </label>
       )}
-      <div className="max-w-full h-9 flex flex-row items-center relative -z-10">
+      <div className="max-w-full h-9 flex flex-row items-center relative">
         <input
           type="number"
           value={value}

@@ -234,7 +234,7 @@ const Home: NextPage = () => {
             </div>
             {mainCategory && (
               <>
-                <div className="fade-in-down">
+                <div className="fade-in-down z-50">
                   <Dropdown
                     data={
                       mainCategory === "kucanstvo"
