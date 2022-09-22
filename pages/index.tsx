@@ -43,6 +43,7 @@ const Home: NextPage = () => {
           name="aktivnaEnergija"
           valueType="kWh"
           onChange={(e: any) => console.log(e.target.value)}
+          tooltip="Aktivna energija cijena:</br> 100KM"
         />
       </>
     ),
