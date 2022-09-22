@@ -17,7 +17,7 @@ const InputField = (props: Props) => {
       {label && (
         <label
           htmlFor={name}
-          className="text-lg font-medium text-gray-700 my-auto"
+          className="text-md font-medium text-gray-700 my-auto"
         >
           {label}
         </label>

@@ -234,7 +234,7 @@ const Home: NextPage = () => {
             </div>
             {mainCategory && (
               <>
-                <div className="fade-in-down z-50">
+                <div className="fade-in-down z-50 mb-16">
                   <Dropdown
                     data={
                       mainCategory === "kucanstvo"
@@ -246,9 +246,11 @@ const Home: NextPage = () => {
                     label="Tarifna Grupa"
                   />
                 </div>
-                {mainCategory === "kucanstvo"
-                  ? homeTarifGroup[currSubCategory]
-                  : otherTarifGroup[currSubCategory]}
+                <div className="flex flex-row flex-wrap justify-between w-full gap-5 fade-in-down">
+                  {mainCategory === "kucanstvo"
+                    ? homeTarifGroup[currSubCategory]
+                    : otherTarifGroup[currSubCategory]}
+                </div>
               </>
             )}
           </div>
