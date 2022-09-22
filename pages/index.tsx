@@ -246,10 +246,24 @@ const Home: NextPage = () => {
                     label="Tarifna Grupa"
                   />
                 </div>
+
                 <div className="flex flex-row flex-wrap justify-between w-full gap-5 fade-in-down">
                   {mainCategory === "kucanstvo"
                     ? homeTarifGroup[currSubCategory]
                     : otherTarifGroup[currSubCategory]}
+                  <div className="w-40 space-y-2 flex flex-col justify-end">
+                    <div className="text-md font-medium text-gray-700 my-auto">
+                      Iznos
+                    </div>
+                    <div className="max-w-full h-9 flex flex-row items-center relative shadow-md rounded-md">
+                      <div className="w-full h-full flex items-center font-bold text-gray-700 text-sm border-2 shadow-inner border-green-300 rounded-md pl-2 pr-12 shadow-green-300/30">
+                        230
+                      </div>
+                      <div className="font-medium text-gray-700 text-sm absolute right-3">
+                        KM
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </>
             )}
