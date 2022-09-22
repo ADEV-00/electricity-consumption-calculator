@@ -4,8 +4,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { NextPage } from "next";
 
-import IconHome from "../public/Home.svg";
-
 import InputField from "../components/ui/inputField";
 import Dropdown from "../components/ui/dropdown";
 
@@ -36,6 +34,119 @@ const Home: NextPage = () => {
     },
     [currSubCategory]
   );
+
+  const homeTarifGroup = {
+    "I tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija"
+          name="aktivnaEnergija"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+          tooltip="Aktivna energija cijena:</br> 100KM"
+        />
+      </>
+    ),
+    "II tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+      </>
+    ),
+  };
+
+  const otherTarifGroup = {
+    "I tarifna grupa": (
+      <>
+        <InputField
+          label="Obračunska snaga"
+          name="obracunskaSnaga"
+          valueType="kW"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <InputField
+          label="Prekomjerna reaktivna energija"
+          name="prekomjerna reaktivna energija"
+          valueType="kvarh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+      </>
+    ),
+    "II tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+      </>
+    ),
+    "III tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija"
+          name="aktivnaEnergija"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+      </>
+    ),
+    "IV tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+      </>
+    ),
+    "V tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija"
+          name="aktivnaEnergija"
+          valueType="kWh"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+      </>
+    ),
+  };
 
   return (
     <div className="w-full max-h-screen h-screen">
@@ -124,21 +235,37 @@ const Home: NextPage = () => {
             </div>
             {mainCategory && (
               <>
-                <Dropdown
-                  data={
-                    mainCategory === "kucanstvo" ? homeCategory : otherCategory
-                  }
-                  value={currSubCategory}
-                  onChange={handleSubCategoryChange}
-                  label="Tarifna Grupa"
-                />
+                <div className="fade-in-down z-50 mb-16">
+                  <Dropdown
+                    data={
+                      mainCategory === "kucanstvo"
+                        ? homeCategory
+                        : otherCategory
+                    }
+                    value={currSubCategory}
+                    onChange={handleSubCategoryChange}
+                    label="Tarifna Grupa"
+                  />
+                </div>
 
-                <InputField
-                  label="Test one"
-                  name="test"
-                  valueType="kvarh"
-                  onChange={(e: any) => console.log(e.target.value)}
-                />
+                <div className="flex flex-row flex-wrap justify-between w-full gap-5 fade-in-down">
+                  {mainCategory === "kucanstvo"
+                    ? homeTarifGroup[currSubCategory]
+                    : otherTarifGroup[currSubCategory]}
+                  <div className="w-40 space-y-2 flex flex-col justify-end">
+                    <div className="text-md font-medium text-gray-700 my-auto">
+                      Iznos
+                    </div>
+                    <div className="max-w-full h-9 flex flex-row items-center relative shadow-md rounded-md">
+                      <div className="w-full h-full flex items-center font-bold text-gray-700 text-sm border-2 shadow-inner border-green-300 rounded-md pl-2 pr-12 shadow-green-300/30">
+                        230
+                      </div>
+                      <div className="font-medium text-gray-700 text-sm absolute right-3">
+                        KM
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </>
             )}
           </div>
