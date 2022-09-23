@@ -46,6 +46,7 @@ const InputField = (props: Props) => {
         )}
         <div className="max-w-full h-9 flex flex-row items-center relative">
           <input
+            min="0"
             type="number"
             value={value}
             name={name}

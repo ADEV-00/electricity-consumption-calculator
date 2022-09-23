@@ -12,6 +12,13 @@ const Home: NextPage = () => {
     "kucanstvo" | "ostalo" | null
   >(null);
   const [currSubCategory, setCurrSubCategory] = useState() as any;
+  const [value, setValue] = useState({
+    aktivnaEnergija: null,
+    aktivnaEnergijaVecaTarifa: null,
+    aktivnaEnergijaManjaTarifa: null,
+    obracunskaSnaga: null,
+    prekomjernaReaktivnaEnergija: null,
+  });
 
   const homeCategory = ["I tarifna grupa", "II tarifna grupa"];
   const otherCategory = [
@@ -35,6 +42,13 @@ const Home: NextPage = () => {
     [currSubCategory]
   );
 
+  const handleOnChange = useCallback((e: any) => {
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value,
+    });
+  }, []);
+
   const homeTarifGroup = {
     "I tarifna grupa": (
       <>
@@ -42,7 +56,7 @@ const Home: NextPage = () => {
           label="Aktivna energija"
           name="aktivnaEnergija"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
           tooltip="Aktivna energija cijena:</br> 100KM"
         />
       </>
@@ -53,13 +67,13 @@ const Home: NextPage = () => {
           label="Aktivna energija - veća tarifa"
           name="aktivnaEnergijaVecaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
         <InputField
           label="Aktivna energija - manja tarifa"
           name="aktivnaEnergijaManjaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
       </>
     ),
@@ -72,25 +86,25 @@ const Home: NextPage = () => {
           label="Obračunska snaga"
           name="obracunskaSnaga"
           valueType="kW"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
         <InputField
           label="Aktivna energija - veća tarifa"
           name="aktivnaEnergijaVecaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
         <InputField
           label="Aktivna energija - manja tarifa"
           name="aktivnaEnergijaManjaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
         <InputField
           label="Prekomjerna reaktivna energija"
-          name="prekomjerna reaktivna energija"
+          name="prekomjernaReaktivnaEnergija"
           valueType="kvarh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
       </>
     ),
@@ -100,13 +114,13 @@ const Home: NextPage = () => {
           label="Aktivna energija - veća tarifa"
           name="aktivnaEnergijaVecaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
         <InputField
           label="Aktivna energija - manja tarifa"
           name="aktivnaEnergijaManjaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
       </>
     ),
@@ -116,7 +130,7 @@ const Home: NextPage = () => {
           label="Aktivna energija"
           name="aktivnaEnergija"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
       </>
     ),
@@ -126,13 +140,13 @@ const Home: NextPage = () => {
           label="Aktivna energija - veća tarifa"
           name="aktivnaEnergijaVecaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
         <InputField
           label="Aktivna energija - manja tarifa"
           name="aktivnaEnergijaManjaTarifa"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
       </>
     ),
@@ -142,7 +156,7 @@ const Home: NextPage = () => {
           label="Aktivna energija"
           name="aktivnaEnergija"
           valueType="kWh"
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleOnChange}
         />
       </>
     ),
