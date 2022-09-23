@@ -79,8 +79,6 @@ const Home: NextPage = () => {
     ),
   };
 
-  console.log(value);
-
   const otherTarifGroup = {
     "I tarifna grupa": (
       <>
