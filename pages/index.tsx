@@ -49,7 +49,7 @@ const Home: NextPage = () => {
   const handleOnChange = useCallback((e: any) => {
     setValue({
       ...value,
-      [e.target.name]: e.target.value,
+      [e.target.name]: Number(e.target.value),
     });
   }, []);
 
@@ -173,6 +173,8 @@ const Home: NextPage = () => {
       </>
     ),
   };
+
+  console.log(value);
 
   return (
     <div className="w-full max-h-screen h-screen">
