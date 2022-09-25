@@ -9,6 +9,11 @@ import Dropdown from "../components/ui/dropdown";
 import {
   homeGroupFirstTarif,
   homeGroupSecoundTarif,
+  otherGroupFifthTarif,
+  otherGroupFirstTarif,
+  otherGroupFourthTarif,
+  otherGroupSecoundTarif,
+  otherGroupThirdTarif,
 } from "../utils/priceCalculate";
 
 const Home: NextPage = () => {
@@ -92,6 +97,25 @@ const Home: NextPage = () => {
       value.aktivnaEnergijaVecaTarifa,
       value.aktivnaEnergijaManjaTarifa
     ),
+  };
+
+  const otherTarifGroupCalculate = {
+    "I tarifna grupa": otherGroupFirstTarif(
+      value.obracunskaSnaga,
+      value.aktivnaEnergijaVecaTarifa,
+      value.aktivnaEnergijaManjaTarifa,
+      value.prekomjernaReaktivnaEnergija
+    ),
+    "II tarifna grupa": otherGroupSecoundTarif(
+      value.aktivnaEnergijaVecaTarifa,
+      value.aktivnaEnergijaManjaTarifa
+    ),
+    "III tarifna grupa": otherGroupThirdTarif(value.aktivnaEnergija),
+    "IV tarifna grupa": otherGroupFourthTarif(
+      value.aktivnaEnergijaVecaTarifa,
+      value.aktivnaEnergijaManjaTarifa
+    ),
+    "V tarifna grupa": otherGroupFifthTarif(value.aktivnaEnergija),
   };
 
   const otherTarifGroup = {
@@ -287,8 +311,9 @@ const Home: NextPage = () => {
                     </div>
                     <div className="max-w-full h-9 flex flex-row items-center relative shadow-md rounded-md">
                       <div className="w-full h-full flex items-center font-bold text-gray-700 text-sm border-2 shadow-inner border-green-300 rounded-md pl-2 pr-12 shadow-green-300/30">
-                        {mainCategory === "kucanstvo" &&
-                          homeTarifGroupCalculate[currSubCategory]}
+                        {mainCategory === "kucanstvo"
+                          ? homeTarifGroupCalculate[currSubCategory]
+                          : otherTarifGroupCalculate[currSubCategory]}
                       </div>
                       <div className="font-medium text-gray-700 text-sm absolute right-3">
                         KM

@@ -68,3 +68,39 @@ export const otherGroupSecoundTarif = (
 
   return Number(result.toFixed(2));
 };
+
+export const otherGroupThirdTarif = (aktivnaEnergija: number): number => {
+  const mjernoMjesto = 4.8;
+  const aktivnaEnergijaIznos = aktivnaEnergija * 0.1346;
+  const obnovljiviIzvori = aktivnaEnergija * 0.0042;
+  const result = mjernoMjesto + aktivnaEnergijaIznos + obnovljiviIzvori;
+
+  return Number(result.toFixed(2));
+};
+
+export const otherGroupFourthTarif = (
+  aktivnaEnergijaVeca: number,
+  aktivnaEnergijaManja: number
+) => {
+  const mjernoMjesto = 4.8;
+  const aktivnaEnergijaVecaTarifaIznos = aktivnaEnergijaVeca * 0.1682;
+  const aktivnaEnergijaManjaTarifaIzons = aktivnaEnergijaManja * 0.0841;
+  const obnovljiviIzvori =
+    (aktivnaEnergijaVeca + aktivnaEnergijaManja) * 0.0042;
+  const result =
+    mjernoMjesto +
+    aktivnaEnergijaVecaTarifaIznos +
+    aktivnaEnergijaManjaTarifaIzons +
+    obnovljiviIzvori;
+
+  return Number(result.toFixed(2));
+};
+
+export const otherGroupFifthTarif = (aktivnaEnergija: number): number => {
+  const mjernoMjesto = 6.9;
+  const aktivnaEnergijaIznos = aktivnaEnergija * 0.1913;
+  const obnovljiviIzvori = aktivnaEnergija * 0.0042;
+  const result = mjernoMjesto + aktivnaEnergijaIznos + obnovljiviIzvori;
+
+  return Number(result.toFixed(2));
+};
