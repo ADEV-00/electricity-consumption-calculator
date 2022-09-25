@@ -54,6 +54,7 @@ const InputField = (props: Props) => {
             className="w-full h-full focus:outline-none text-sm border border-gray-200 rounded-md pl-2 pr-12 focus:border-green-300 focus:shadow-md focus:shadow-green-300/30"
             placeholder={placeholder}
             onChange={onChange}
+            pattern="[0-9]*"
           />
           <div className="font-medium text-gray-700 text-sm absolute right-3">
             {valueType}

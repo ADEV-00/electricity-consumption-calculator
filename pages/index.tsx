@@ -46,12 +46,15 @@ const Home: NextPage = () => {
     [currSubCategory]
   );
 
-  const handleOnChange = useCallback((e: any) => {
-    setValue({
-      ...value,
-      [e.target.name]: Number(e.target.value),
-    });
-  }, []);
+  const handleOnChange = useCallback(
+    (e: any) => {
+      setValue({
+        ...value,
+        [e.target.name]: Number(e.target.value),
+      });
+    },
+    [value]
+  );
 
   const homeTarifGroup = {
     "I tarifna grupa": (
@@ -173,8 +176,6 @@ const Home: NextPage = () => {
       </>
     ),
   };
-
-  console.log(value);
 
   return (
     <div className="w-full max-h-screen h-screen">

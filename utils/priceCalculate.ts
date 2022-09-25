@@ -1,6 +1,6 @@
 const mjernoMjestoDomacinstva = 4.8;
 
-export const homeGroupFirstTarif = (aktivnaEnergija: number) => {
+export const homeGroupFirstTarif = (aktivnaEnergija: number): number => {
   if (aktivnaEnergija) {
     const obnovljiviIzvori = aktivnaEnergija * 0.0042;
     const cijenaAktivneEnergije = aktivnaEnergija * 0.1346;
