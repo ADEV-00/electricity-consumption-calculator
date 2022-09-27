@@ -1,13 +1,13 @@
 const mjernoMjestoDomacinstva = 4.8;
 
 export const homeGroupFirstTarif = (aktivnaEnergija: number): number => {
-  if (aktivnaEnergija) {
-    const obnovljiviIzvori = aktivnaEnergija * 0.0042;
-    const cijenaAktivneEnergije = aktivnaEnergija * 0.1346;
-    const result =
-      mjernoMjestoDomacinstva + cijenaAktivneEnergije + obnovljiviIzvori;
-    return Number(result.toFixed(2));
-  }
+  const obnovljiviIzvori = aktivnaEnergija * 0.0042;
+  const cijenaAktivneEnergije = aktivnaEnergija * 0.1346;
+  const result =
+    mjernoMjestoDomacinstva + cijenaAktivneEnergije + obnovljiviIzvori;
+
+  if (aktivnaEnergija) return Number(result.toFixed(2));
+
   return;
 };
 
@@ -24,7 +24,9 @@ export const homeGroupSecoundTarif = (
     obnovljiviIzvori +
     aktivnaEnergijaVecaTarifa +
     aktivnaEnergijaManjaTarifa;
-  return Number(result.toFixed(2));
+  if (aktivnaEnergijaManja || aktivnaEnergijaVeca)
+    return Number(result.toFixed(2));
+  return;
 };
 
 export const otherGroupFirstTarif = (
@@ -48,7 +50,15 @@ export const otherGroupFirstTarif = (
     aktivnaEnergijaManjaTarifaIzons +
     prekomjernaReaktivnaEnergijaIznos +
     obnovljiviIzvori;
-  return Number(result.toFixed(2));
+
+  if (
+    obracunSnage ||
+    aktivnaEnergijaVecaTarifa ||
+    aktivnaEnergijaManjaTarifa ||
+    prekomjernaReaktivnaEnergija
+  )
+    return Number(result.toFixed(2));
+  return;
 };
 
 export const otherGroupSecoundTarif = (
@@ -65,8 +75,9 @@ export const otherGroupSecoundTarif = (
     aktivnaEnergijaVecaTarifaIznos +
     aktvinaEnergijaManjaTarifaIzons +
     obnovljiviIzvori;
-
-  return Number(result.toFixed(2));
+  if (aktivnaEnergijaVecaTarifa || aktivnaEnergijaManjaTarifa)
+    return Number(result.toFixed(2));
+  return;
 };
 
 export const otherGroupThirdTarif = (aktivnaEnergija: number): number => {
@@ -75,7 +86,8 @@ export const otherGroupThirdTarif = (aktivnaEnergija: number): number => {
   const obnovljiviIzvori = aktivnaEnergija * 0.0042;
   const result = mjernoMjesto + aktivnaEnergijaIznos + obnovljiviIzvori;
 
-  return Number(result.toFixed(2));
+  if (aktivnaEnergija) return Number(result.toFixed(2));
+  return;
 };
 
 export const otherGroupFourthTarif = (
@@ -93,7 +105,9 @@ export const otherGroupFourthTarif = (
     aktivnaEnergijaManjaTarifaIzons +
     obnovljiviIzvori;
 
-  return Number(result.toFixed(2));
+  if (aktivnaEnergijaVeca || aktivnaEnergijaManja)
+    return Number(result.toFixed(2));
+  return;
 };
 
 export const otherGroupFifthTarif = (aktivnaEnergija: number): number => {
@@ -102,5 +116,6 @@ export const otherGroupFifthTarif = (aktivnaEnergija: number): number => {
   const obnovljiviIzvori = aktivnaEnergija * 0.0042;
   const result = mjernoMjesto + aktivnaEnergijaIznos + obnovljiviIzvori;
 
-  return Number(result.toFixed(2));
+  if (aktivnaEnergija) return Number(result.toFixed(2));
+  return;
 };
