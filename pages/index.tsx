@@ -200,6 +200,13 @@ const Home: NextPage = () => {
     ),
   };
 
+  const handlePDV = (price: number) => {
+    if (!price) return;
+    const pdv = price * 0.17;
+    const result = pdv + price;
+    return result.toFixed(2);
+  };
+
   return (
     <div className="w-full max-h-screen h-screen">
       <Head>
@@ -311,8 +318,10 @@ const Home: NextPage = () => {
                     <div className="max-w-full h-9 flex flex-row items-center relative shadow-md rounded-md">
                       <div className="w-full h-full flex items-center font-bold text-gray-700 text-sm border-2 shadow-inner border-green-300 rounded-md pl-2 pr-12 shadow-green-300/30">
                         {mainCategory === "kucanstvo"
-                          ? homeTarifGroupCalculate[currSubCategory]
-                          : otherTarifGroupCalculate[currSubCategory]}
+                          ? handlePDV(homeTarifGroupCalculate[currSubCategory])
+                          : handlePDV(
+                              otherTarifGroupCalculate[currSubCategory]
+                            )}
                       </div>
                       <div className="font-medium text-gray-700 text-sm absolute right-3">
                         KM
