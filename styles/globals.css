@@ -54,11 +54,11 @@ body {
   }
 }
 
-.animation-test {
+.animation-transition {
   transform: scale(1.5) translate(50%, 100%);
 }
 
-.animation-test-active {
+.animation-transition-active {
   animation: mainCategoryAnimation 1.5s cubic-bezier(0.17, 0, 0.3, 1.13)
     forwards;
 }

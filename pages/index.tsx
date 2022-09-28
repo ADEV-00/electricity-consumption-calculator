@@ -69,6 +69,7 @@ const Home: NextPage = () => {
           valueType="kWh"
           onChange={handleOnChange}
           tooltip="Aktivna energija cijena:</br> 100KM"
+          value={value.aktivnaEnergija}
         />
       </>
     ),
@@ -79,12 +80,107 @@ const Home: NextPage = () => {
           name="aktivnaEnergijaVecaTarifa"
           valueType="kWh"
           onChange={handleOnChange}
+          value={value.aktivnaEnergijaVecaTarifa}
         />
         <InputField
           label="Aktivna energija - manja tarifa"
           name="aktivnaEnergijaManjaTarifa"
           valueType="kWh"
           onChange={handleOnChange}
+          value={value.aktivnaEnergijaManjaTarifa}
+        />
+      </>
+    ),
+  };
+
+  const otherTarifGroup = {
+    "I tarifna grupa": (
+      <>
+        <InputField
+          label="Obračunska snaga"
+          name="obracunskaSnaga"
+          valueType="kW"
+          onChange={handleOnChange}
+          value={value.obracunskaSnaga}
+        />
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergijaVecaTarifa}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergijaManjaTarifa}
+        />
+        <InputField
+          label="Prekomjerna reaktivna energija"
+          name="prekomjernaReaktivnaEnergija"
+          valueType="kvarh"
+          onChange={handleOnChange}
+          value={value.prekomjernaReaktivnaEnergija}
+        />
+      </>
+    ),
+    "II tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergijaVecaTarifa}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergijaManjaTarifa}
+        />
+      </>
+    ),
+    "III tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija"
+          name="aktivnaEnergija"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergija}
+        />
+      </>
+    ),
+    "IV tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija - veća tarifa"
+          name="aktivnaEnergijaVecaTarifa"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergijaVecaTarifa}
+        />
+        <InputField
+          label="Aktivna energija - manja tarifa"
+          name="aktivnaEnergijaManjaTarifa"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergijaManjaTarifa}
+        />
+      </>
+    ),
+    "V tarifna grupa": (
+      <>
+        <InputField
+          label="Aktivna energija"
+          name="aktivnaEnergija"
+          valueType="kWh"
+          onChange={handleOnChange}
+          value={value.aktivnaEnergija}
         />
       </>
     ),
@@ -115,89 +211,6 @@ const Home: NextPage = () => {
       value.aktivnaEnergijaManjaTarifa
     ),
     "V tarifna grupa": otherGroupFifthTarif(value.aktivnaEnergija),
-  };
-
-  const otherTarifGroup = {
-    "I tarifna grupa": (
-      <>
-        <InputField
-          label="Obračunska snaga"
-          name="obracunskaSnaga"
-          valueType="kW"
-          onChange={handleOnChange}
-        />
-        <InputField
-          label="Aktivna energija - veća tarifa"
-          name="aktivnaEnergijaVecaTarifa"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-        <InputField
-          label="Aktivna energija - manja tarifa"
-          name="aktivnaEnergijaManjaTarifa"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-        <InputField
-          label="Prekomjerna reaktivna energija"
-          name="prekomjernaReaktivnaEnergija"
-          valueType="kvarh"
-          onChange={handleOnChange}
-        />
-      </>
-    ),
-    "II tarifna grupa": (
-      <>
-        <InputField
-          label="Aktivna energija - veća tarifa"
-          name="aktivnaEnergijaVecaTarifa"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-        <InputField
-          label="Aktivna energija - manja tarifa"
-          name="aktivnaEnergijaManjaTarifa"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-      </>
-    ),
-    "III tarifna grupa": (
-      <>
-        <InputField
-          label="Aktivna energija"
-          name="aktivnaEnergija"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-      </>
-    ),
-    "IV tarifna grupa": (
-      <>
-        <InputField
-          label="Aktivna energija - veća tarifa"
-          name="aktivnaEnergijaVecaTarifa"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-        <InputField
-          label="Aktivna energija - manja tarifa"
-          name="aktivnaEnergijaManjaTarifa"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-      </>
-    ),
-    "V tarifna grupa": (
-      <>
-        <InputField
-          label="Aktivna energija"
-          name="aktivnaEnergija"
-          valueType="kWh"
-          onChange={handleOnChange}
-        />
-      </>
-    ),
   };
 
   const handlePDV = (price: number) => {
@@ -232,8 +245,8 @@ const Home: NextPage = () => {
           <div className="w-2/4 flex flex-row flex-wrap justify-between mx-auto ">
             <div
               className={
-                "space-y-2 animation-test " +
-                (mainCategory && "animation-test-active")
+                "space-y-2 animation-transition " +
+                (mainCategory && "animation-transition-active")
               }
             >
               <p className="text-lg font-medium text-gray-700">
