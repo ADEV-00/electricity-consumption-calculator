@@ -48,7 +48,7 @@ const InputField = (props: Props) => {
           <input
             min="0"
             type="number"
-            value={value}
+            value={value ? value : 0}
             name={name}
             id={name}
             className="w-full h-full focus:outline-none text-sm border border-gray-200 rounded-md pl-2 pr-12 focus:border-green-300 focus:shadow-md focus:shadow-green-300/30"
