@@ -207,6 +207,8 @@ const Home: NextPage = () => {
     return result.toFixed(2);
   };
 
+  console.log(value);
+
   return (
     <div className="w-full max-h-screen h-screen">
       <Head>
@@ -243,7 +245,7 @@ const Home: NextPage = () => {
                   className={
                     "border border-gray-200 h-20 w-20 rounded-md flex flex-col items-center justify-center gap-2 cursor-pointer " +
                     (mainCategory === "kucanstvo"
-                      ? "bg-green-300 shadow-md text-white"
+                      ? "bg-[#1BF485] shadow-md text-white"
                       : " text-gray-700")
                   }
                 >
@@ -267,7 +269,7 @@ const Home: NextPage = () => {
                   className={
                     "border border-gray-200 h-20 w-20 rounded-md flex flex-col items-center justify-center gap-2 cursor-pointer " +
                     (mainCategory === "ostalo"
-                      ? "bg-green-300 shadow-md text-white"
+                      ? "bg-[#1BF485] shadow-md text-white"
                       : " text-gray-700")
                   }
                 >
