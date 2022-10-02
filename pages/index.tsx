@@ -14,6 +14,7 @@ import {
   otherGroupSecoundTarif,
   otherGroupThirdTarif,
 } from "../utils/priceCalculate";
+import { handlePDV } from "../utils/pdvCalculate";
 
 const Home: NextPage = () => {
   const [mainCategory, setMainCategory] = useState<
@@ -212,15 +213,6 @@ const Home: NextPage = () => {
     ),
     "V tarifna grupa": otherGroupFifthTarif(value.aktivnaEnergija),
   };
-
-  const handlePDV = (price: number) => {
-    if (!price) return;
-    const pdv = price * 0.17;
-    const result = pdv + price;
-    return result.toFixed(2);
-  };
-
-  console.log(value);
 
   return (
     <div className="w-full max-h-screen h-screen">
