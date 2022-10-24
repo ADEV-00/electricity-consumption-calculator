@@ -19,7 +19,7 @@ const InputField = (props: Props) => {
     props;
   const ref = useRef(null);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (tooltip) {
       tippy(ref.current, {
         content: tooltip,
@@ -29,7 +29,7 @@ const InputField = (props: Props) => {
         allowHTML: true,
       });
     }
-  }, []);
+  }, []); */
 
   return (
     <>
